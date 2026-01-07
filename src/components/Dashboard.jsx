@@ -46,7 +46,7 @@ const Dashboard = () => {
     useEffect(() => {
     async function loadLoan() {
         try {
-        const res = await fetch("hhttps://aidmakers.onrender.com/api/accounts/184/loan-summary");
+        const res = await fetch("https://aidmakers.onrender.com/api/accounts/184/loan-summary");
         if (!res.ok) throw new Error("Failed to fetch loan");
 
         const data = await res.json();
