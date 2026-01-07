@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="navbar-left">
-        <div className="navbar-logo">LoanFlow</div>
+        <div className="navbar-logo">AidMakers</div>
       </div>
 
       <nav className="navbar-center">
@@ -28,12 +28,12 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
-          to="/profile"
+          to="/management"
           className={({ isActive }) =>
             "nav-link" + (isActive ? " active" : "")
           }
         >
-          Profile
+          Management
         </NavLink>
       </nav>
 

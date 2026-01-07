@@ -1,19 +1,20 @@
 # backend/main.py
 from datetime import date, datetime, timedelta
 
+import models
+from database import Base, engine, get_db
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
-
-from . import models
-from .database import Base, engine, get_db
-from .models import (
+from models import (
     AccountOut,
     LoanApplication,
     LoanApplicationModel,
     LoanSummaryOut,
     PaymentHistoryPoint,
+    ScoringOut,
 )
+from sqlalchemy import text
+from sqlalchemy.orm import Session
 
 Base.metadata.create_all(bind=engine)
 
@@ -21,12 +22,19 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",  
+        "http://localhost:3000",  
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+@app.get("/health")
+def health(db = Depends(get_db)):
+    db.execute(text("SELECT 1"))
+    return {"status": "ok", "db": "connected"}
 
 @app.get("/")
 def read_root():
@@ -202,3 +210,8 @@ def submit_application(payload: LoanApplication, db: Session = Depends(get_db)):
     db.refresh(new_app)
 
     return {"status": "success", "application_id": new_app.id}
+
+@app.get("/api/scoring", response_model=list[ScoringOut])
+def get_scoring(db: Session = Depends(get_db)):
+    rows = db.query(models.Scoring).all()
+    return rows

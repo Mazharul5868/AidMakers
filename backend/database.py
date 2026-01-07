@@ -14,7 +14,7 @@ DB_PORT = os.getenv("DB_PORT", "")
 DB_NAME = os.getenv("DB_NAME", "aidmakers_db")
 
 SQLALCHEMY_DATABASE_URL = (
-    f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?ssl_ca={os.getenv('SSL_CA')}"
 )
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)

@@ -33,3 +33,13 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Database dumps
+*.sql
+
+# IDE
+.vscode/
+.idea/
+
+#cetificates
+backend/cert/

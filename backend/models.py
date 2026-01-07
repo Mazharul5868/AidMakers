@@ -2,11 +2,10 @@
 from datetime import date, datetime, timedelta
 from typing import Literal, Optional
 
+from database import Base
 from pydantic import BaseModel
 from sqlalchemy import DECIMAL, Column, Date, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-
-from .database import Base
 
 
 class Item(Base):
@@ -57,6 +56,14 @@ class LoanRepayment(Base):
 
     loan = relationship("Loan", back_populates="repayments")
 
+class Scoring(Base):
+    __tablename__ = "scoring_table" 
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, index=True)
+    point_score = Column(DECIMAL(10, 2))
+    percentage = Column(DECIMAL(10, 4))
+
 # -------- Pydantic schemas (response / request models) --------
 
 class AccountOut(BaseModel):
@@ -85,7 +92,7 @@ class LoanSummaryOut(BaseModel):
     next_payment_date: Optional[date] = None
     status: Literal["Active", "Overdue", "Closed"]
     reminder_date: Optional[date] = None 
-    
+
     class Config:
         orm_mode = True
 
@@ -99,6 +106,15 @@ class PaymentHistoryPoint(BaseModel):
 
     class Config:
         orm_mode = True
+
+class ScoringOut(BaseModel):
+    user_id: int
+    point_score: float
+    percentage: float
+
+    class Config:
+        orm_mode = True
+
 
 class LoanApplication(BaseModel):
     fullName: str
