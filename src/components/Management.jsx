@@ -8,7 +8,7 @@ const Management = () => {
     useEffect(() => {
     async function loadScores() {
         try {
-        const res = await fetch("http://localhost:8000/api/scoring");
+        const res = await fetch("https://aidmakers.onrender.com/api/scoring");
         if (!res.ok) throw new Error("Failed to fetch scores");
 
         const data = await res.json();

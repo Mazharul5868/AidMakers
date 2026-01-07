@@ -23,7 +23,7 @@ const Dashboard = () => {
     useEffect(() => {
         async function loadUser() {
         try {
-            const res = await fetch("http://localhost:8000/api/accounts/184");
+            const res = await fetch("https://aidmakers.onrender.com/api/accounts/184");
             if (!res.ok) throw new Error("Failed to fetch user");
 
             const data = await res.json();
@@ -46,7 +46,7 @@ const Dashboard = () => {
     useEffect(() => {
     async function loadLoan() {
         try {
-        const res = await fetch("http://localhost:8000/api/accounts/184/loan-summary");
+        const res = await fetch("hhttps://aidmakers.onrender.com/api/accounts/184/loan-summary");
         if (!res.ok) throw new Error("Failed to fetch loan");
 
         const data = await res.json();
@@ -69,7 +69,7 @@ const Dashboard = () => {
     useEffect(() => {
     async function loadHistory() {
         try {
-        const res = await fetch("http://localhost:8000/api/accounts/184/payment-history");
+        const res = await fetch("https://aidmakers.onrender.com/api/accounts/184/payment-history");
         if (!res.ok) throw new Error("Failed to fetch payment history");
 
         const data = await res.json();

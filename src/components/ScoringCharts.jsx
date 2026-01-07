@@ -1,21 +1,21 @@
 // src/components/ScoringCharts.jsx
 import { useEffect, useState } from "react";
 import {
-    CartesianGrid,
-    Line,
-    LineChart,
-    Scatter,
-    ScatterChart,
-    Tooltip,
-    XAxis,
-    YAxis,
+  CartesianGrid,
+  Line,
+  LineChart,
+  Scatter,
+  ScatterChart,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 
 const ScoringCharts = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/scoring/184")
+    fetch("https://aidmakers.onrender.com/api/scoring/184")
       .then((res) => res.json())
       .then((d) => setData(d))
       .catch((err) => console.error("Error fetching scoring data", err));
