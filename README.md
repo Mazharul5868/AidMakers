@@ -1,16 +1,64 @@
-# React + Vite
+# AidMakers – Micro-Loan Service Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AidMakers is a micro-loan service platform designed to support responsible, community-focused lending.  
+The system identifies early signs of financial strain and enables proactive intervention before borrowers fall into arrears.
 
-Currently, two official plugins are available:
+The platform was built during a hackathon to demonstrate how technology can improve financial wellbeing through ethical lending workflows.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Automated Loan Approval
+- Automatically approves **£50 loans** when no financial strain indicators are detected.
 
-## Expanding the ESLint configuration
+### Intelligent Review Workflow
+- Applications showing potential risk are routed for **manual review** instead of being automatically rejected.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Flexible Repayment Options
+- Extend repayment deadlines
+- Split repayments into smaller instalments
+
+### Smart Repayment Reminders
+- Automated reminders sent multiple times before repayment due dates.
+
+### Point-Based User System
+- Users earn points through consistent repayments.
+- Higher-scoring users qualify for increased loan tiers:
+  - £100
+  - £150
+
+### Admin Dashboard
+- Real-time insights into:
+  - User activity
+  - Loan status
+  - Repayment performance
+  - Risk indicators
+
+---
+
+## System Architecture
+
+- **Backend:** FastAPI (Python)
+- **Database:** MySQL 8
+- **ORM:** SQLAlchemy
+- **Validation:** Pydantic
+- **Containerization:** Docker & Docker Compose
+- **Frontend:** React (Vite)
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Docker
+- Docker Compose
+
+---
+
+## Installation & Setup
+
+### 1. Clone the repository
+```bash
+git clone <repository-url>
+cd aidmakers
